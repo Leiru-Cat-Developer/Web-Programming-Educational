@@ -1,0 +1,44 @@
+.square {
+    background-color: red;
+    display: inline-block;
+    padding: 40px;
+}
+
+.circle {
+    background-color: green;
+    display: inline-block;
+    padding: 40px;
+    border-radius: 40px;
+}
+
+.corner {
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    width: 300px;
+    padding: 0px 0px 15px 15px;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.design {
+    border: none;
+    background-color: rgb(51, 51, 51);
+    width: 380px;
+    height: 80px;
+    padding: 15px;
+}
+
+.principal {
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin: 0px 0px 5px 0px;
+}
+
+.descripcion {
+    font-family: Arial;
+    color: rgb(175, 175, 175);
+}

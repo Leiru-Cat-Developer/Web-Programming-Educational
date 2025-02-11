@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>6A EXS</title>
+    </head>
+    <body>
+        <script>
+            //EXS 6A - 6C
+            let hour = 20;
+            let name = 'Uriel';
+
+            if(hour >= 6 && hour <= 12){
+                console.log(`Good morning ${name}`);
+            }else if(hour >= 13 && hour <= 17) {
+                console.log(`Good afternoon ${name}`);
+            }else {
+                console.log(`Good night! ${name}`);
+            }
+
+            //EXS 6D
+            let age = 6;
+            const isHoliday = true;
+
+            const discountResult = ((age <= 6 || age >= 65) && !isHoliday) ? 'Discount!' : 'No discount!';
+            console.log(discountResult);
+
+            //EXS 6F
+            let randomNumber = Math.random();
+            let result = '';
+            let guess = 'tails';
+
+            result = (randomNumber < 0.5) ? 'heads' : 'tails';
+            const guessResult = (guess === result) ? 'YOU WIN' : 'YOU LOSE';
+            console.log(`Random Number: ${randomNumber}, Result: ${result}`);
+            console.log(guessResult);
+        </script>
+    </body>
+</html>

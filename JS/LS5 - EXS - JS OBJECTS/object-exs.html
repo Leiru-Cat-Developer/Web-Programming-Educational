@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>OBJECTS</title>
+    </head>
+    <body>
+        <script>
+            //EXS 8A - 8B
+            const basketball = {
+                price: 2095,
+                ['delivery-time']: '3 Days'
+            };
+            console.log(basketball);
+            basketball.price+=500;
+            console.log(basketball);
+
+            //EXS 8C - 8D
+            const product1 = {
+                name: 'Cellphone',
+                price: 5000
+            };
+            const product2 = {
+                name: 'Tenis',
+                price: 3000
+            };
+            function comparePrice(product1, product2) {
+                if(product1.price > product2.price) {
+                    return product2;
+                }else {
+                    return product1;
+                }
+            }
+            console.log(comparePrice(product1,product2));
+
+            //EXS 8E
+            const pr1 = {
+                name: 'Guitar',
+                price: 2000
+            }
+            const pr2 = {
+                name: 'Guitar',
+                price: 3000
+            }
+            function isSameProduct(product1, product2) {
+                if((product1.name === product2.name)&&(product1.price === product2.price)) {
+                    return true;
+                }else {
+                    return false;
+                }
+            }
+            console.log(isSameProduct(pr1,pr2));
+
+            //8F - 8G
+            let lowerString = "GOOD JOB!";
+            console.log(lowerString.toLowerCase());
+
+            let repeatString = "GOOD MORNING :D ";
+            console.log(repeatString.repeat(5));
+        </script>
+    </body>
+</html>

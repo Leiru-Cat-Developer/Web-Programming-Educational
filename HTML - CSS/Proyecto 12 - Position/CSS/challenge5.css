@@ -1,0 +1,63 @@
+body {
+    height: 3000px;
+}
+
+.sidebar-info {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 350px;
+    background-color: rgb(74, 74, 74);
+}
+
+.text-info {
+    margin-left: 90px;
+    padding: 10px 20px 0px 20px;
+}
+
+.text-titles {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-one {
+    font-family: Arial;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.title-two,
+.info1,
+.info2,
+.info3 {
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(145, 145, 145);
+}
+
+.sidebar-users {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 90px;
+    background-color: rgb(44, 44, 44);
+}
+
+.users {
+    text-align: center;
+}
+
+.img1,
+.img2,
+.img3 {
+    margin-top: 10px;
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 100%;
+    cursor: pointer;
+}

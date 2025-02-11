@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cart Quantity</title>
+    </head>
+    <body>
+        <p>
+            Cart Quantity
+        </p>
+        <button onclick="
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        ">Show Quantity</button>
+
+        <button onclick="
+            cartQuantity < 10 ? (cartQuantity++, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('The cart is full');
+        ">Add to Cart</button>
+
+        <button onclick="
+            cartQuantity < 10 ? (cartQuantity+=2, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('The cart is full');
+        ">+2</button>
+
+        <button onclick="
+            cartQuantity < 10 ? (cartQuantity+=3, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('The cart is full');
+        ">+3</button>
+
+        <button onclick="
+            cartQuantity < 10 ? (cartQuantity+=4, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('The cart is full');
+        ">+4</button>
+
+        <button onclick="
+            cartQuantity < 10 ? (cartQuantity+=5, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('The cart is full');
+        ">+5</button>
+
+        <button onclick="
+            cartQuantity > 0 ? (cartQuantity--, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('Not enough items in the cart');
+        ">Remove from cart</button>
+
+        <button onclick="
+            cartQuantity > 0 ? (cartQuantity-=2, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('Not enough items in the cart');
+        ">-2</button>
+
+        <button onclick="
+            cartQuantity > 0 ? (cartQuantity-=3, console.log(`Cart Quantity: ${cartQuantity}`)) : alert('Not enough items in the cart');
+        ">-3</button>
+
+        <button onclick="
+            cartQuantity = 0;
+            console.log('Cart was reset.');
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        ">Reset Cart</button>
+
+        <script>
+            let cartQuantity = 0;
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+.nameType1,
+.nameType2 {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: rgb(199, 199, 199);
+    font-family: Arial;
+    font-size: 15px;
+    padding: 10px 0px 10px 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.emailType {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: rgb(199, 199, 199);
+    width: 392px;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 10px 0px 10px 20px;
+    margin-bottom: 13px;
+    display: block;
+}
+
+.log {
+    border: none;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(30, 90, 202);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+    width: 413px;
+}

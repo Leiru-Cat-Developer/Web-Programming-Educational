@@ -1,0 +1,8 @@
+.input1 {
+    margin-bottom: 10px;
+}
+
+.input1,
+.input2 {
+    display: block;
+}

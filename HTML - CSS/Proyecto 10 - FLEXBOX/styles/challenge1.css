@@ -1,0 +1,78 @@
+.ex1 {
+    display: flex;
+    flex-direction: row;   
+}
+
+.width-flex1 {
+    background-color: lightblue;
+    width: 200px;
+}
+
+.width-flex2 {
+    background-color: lightpink;
+    width: 75px;
+}
+
+.ex2 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.rem-1 {
+    background-color: lightblue;
+    width: 50px;
+}
+
+.rem-2 {
+    background-color: lightpink;
+    flex: 1;
+}
+
+.rem-3 {
+    background-color: lightblue;
+    width: 75px;
+}
+
+.ex3 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btw-1 {
+    background-color: lightblue;
+}
+
+.btw-2 {
+    background-color: lightpink;
+}
+
+.btw-3 {
+    background-color: lightblue;
+}
+
+.btw-4 {
+    background-color: lightpink;
+}
+
+.ex4 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+}
+
+.box-1 {
+    background-color: lightblue;
+}
+
+.box-2 {
+    background-color: lightpink;
+}

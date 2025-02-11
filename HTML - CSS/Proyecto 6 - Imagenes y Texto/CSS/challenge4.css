@@ -1,0 +1,32 @@
+.imagen-usuario {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.text-input {
+    font-family: Arial;
+    font-size: 15px;
+    border: none;
+    width: 300px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.tweetear {
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 80px;
+    background-color: rgb(26, 161, 242);
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    vertical-align: middle;
+}

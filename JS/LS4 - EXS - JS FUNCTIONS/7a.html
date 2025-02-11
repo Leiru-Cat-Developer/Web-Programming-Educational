@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Functions</title>
+    </head>
+    <body>
+        <script>
+            //EXS 7A - 7C
+            function greet(name) {
+                //FALSY AND THURYLY METHOD
+                !name ? console.log('Hi there!') : console.log(`Hello ${name}!`);
+            }
+            greet('Uriel');
+            greet('Michael');
+            greet('Tash');
+            greet();//UNDEFINED BEFORE EXS 7B
+
+            //EXS 7D
+            function convertToFahrenheit(celsius) {
+                let Fahrenheit = (celsius * 9/5) + 32;
+                return Fahrenheit;
+            }
+            console.log(`Celsius converted to Fahrenheit: ${convertToFahrenheit(25)}`);
+
+            //EXS 7E
+            function convertToCelsius(fahrenheit) {
+                let Celsius = (fahrenheit - 32) * 5/9;
+                return Celsius;
+            }
+            console.log(`Fahrenheit converted to Celsius: ${convertToCelsius(86)}`);
+
+            //EXS 7F
+            function convertTemperature(degrees, unit) {
+                let result;
+                unit === 'C' ? result = convertToFahrenheit(degrees)+'F' : result = convertToCelsius(degrees)+'C';
+                return result;
+            }
+            console.log(convertTemperature(25,'C'));
+            console.log(convertTemperature(86,'F'));
+
+            //EXS 7G
+            function convertLenght(lenght, from, to) {
+                let result;
+
+                if(from === 'Km' && to === 'miles') {
+                    result = (lenght/1.6);
+                    console.log(`${result} ${to}`);
+                } else if (from === 'Km' && to === "Km") {
+                    console.log(`${lenght} ${to}`);
+                } else if (from === 'Km' && to === 'FT') {
+                    result = (lenght * 3281);
+                    console.log(`${result} ${to}`);
+                } else if (from === 'miles' && to === 'Km') {
+                    result = (lenght * 1.6);
+                    console.log(`${result} ${to}`);
+                } else if (from === 'miles' && to === 'miles') {
+                    console.log(`${from} ${to}`);
+                } else if(from === 'miles' && to === 'FT') {
+                    result = (lenght * 5280);
+                    console.log(`${result} ${to}`);
+                } else if (from === 'FT' && to === 'Km') {
+                    result = (lenght / 3281);
+                    console.log(`${result} ${to}`);
+                } else if (from === 'FT' && to === 'miles') {
+                    result = (lenght / 3281);
+                    console.log(`${result} ${to}`);
+                } else if (from === 'FT' && to === 'FT') {
+                    console.log(`${lenght} ${to}`);
+                } else {
+                    console.log(`Invalid unit(s): ${from}, ${to}`);
+                }
+            }
+
+            convertLenght(50,'miles','Km');
+            convertLenght(32,'Km','miles');
+            convertLenght(50,'Km','Km');
+
+            convertLenght(5,'miles','Km');
+            convertLenght(5,'miles','FT');
+            convertLenght(5,'Km','FT');
+
+            convertLenght(5,'lbs','lbs');
+        </script>
+    </body>
+</html>

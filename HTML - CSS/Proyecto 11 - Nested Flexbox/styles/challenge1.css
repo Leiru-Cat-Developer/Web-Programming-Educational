@@ -1,0 +1,57 @@
+p {
+    margin: 0px;
+}
+
+.ex1 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.item1-ex1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightpink;
+    width: 100px;
+    height: 70px;
+}
+
+.text1-item-ex1 {
+    background-color: black;
+    color: white;
+}
+
+.item2-ex1 {
+    background-color: lightblue;
+    width: 200px;
+    height: 70px;
+}
+
+.ex2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.item1-ex2 {
+    background-color: lightpink;
+    width: 100px;
+    height: 70px;
+    
+}
+
+.item2-ex2 {
+    background-color: lightblue;
+    width: 200px;
+    height: 70;
+}
+
+.nest-2-ex2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row2-ex2 {
+    color: white;
+    background-color: black;
+}

@@ -1,0 +1,23 @@
+p {
+    font-family: Arial;
+    font-size: 17px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.text1 {
+    margin-bottom: 6px;
+}
+
+.last-user {
+    color: rgb(96, 96, 96);
+}
+
+.text2 {
+    width: 550px;
+    margin-bottom: 12px;
+}
+
+.tag-user {
+    color: rgb(0, 149, 255);
+}

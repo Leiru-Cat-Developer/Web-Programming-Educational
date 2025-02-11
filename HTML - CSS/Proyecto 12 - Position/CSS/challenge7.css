@@ -1,0 +1,48 @@
+body {
+    height: 3000px;
+}
+
+.container {
+    position: relative;
+    display: inline-block;
+    top: 30px;
+    left: 30px;
+}
+
+.img-clothes {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.discount {
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 2px 7px 2px 7px;
+    top: 10px;
+    right: 0px;
+}
+
+.desing-below {
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    text-align: center;
+    background-color: rgba(211, 211, 211, 0.6);
+    bottom: 0px;
+    left: 0px;
+}
+
+.add {
+    font-family: Arial;
+    border: solid;
+    border-color: black;
+    border-width: 2px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 30px;
+    cursor: pointer;
+}
