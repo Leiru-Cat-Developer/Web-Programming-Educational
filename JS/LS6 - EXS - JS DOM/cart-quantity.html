@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cart Quantity</title>
+    </head>
+    <body>
+        <p>
+            Cart Quantity
+        </p>
+        <button onclick="
+            showQuantity();
+        ">Show Quantity</button>
+
+        <button onclick="
+            updateCartQuantity(1);
+        ">Add to Cart</button>
+
+        <button onclick="
+            updateCartQuantity(2);
+        ">+2</button>
+
+        <button onclick="
+            updateCartQuantity(3);
+        ">+3</button>
+
+        <button onclick="
+            updateCartQuantity(4);
+        ">+4</button>
+
+        <button onclick="
+            updateCartQuantity(5);
+        ">+5</button>
+
+        <button onclick="
+            updateCartQuantity(-1);
+        ">Remove from cart</button>
+
+        <button onclick="
+            updateCartQuantity(-2);
+        ">-2</button>
+
+        <button onclick="
+            updateCartQuantity(-3)
+        ">-3</button>
+
+        <button onclick="
+            cartQuantity = 0;
+            alert('Cart was reset');
+            showQuantity();
+        ">Reset Cart</button>
+
+        <p class="js-quantity"></p>
+
+        <script>
+            let cartQuantity = 0;
+
+            showQuantity();
+            
+            function updateCartQuantity(change) {
+                //When the cart increases in a positive way
+                if(cartQuantity + change > 10) {
+                    alert('The cart is full . . .');
+                    return;
+                }
+
+                //When the cart increases in a negative way
+                if(cartQuantity + change < 0) {
+                    alert('Not enough items in the cart . . .');
+                    return;
+                }
+
+                //Update the quantity cart
+                document.querySelector('.js-quantity')
+                .innerHTML = `Cart quantity: ${cartQuantity += change}`;
+            }
+            function showQuantity() {
+                document.querySelector('.js-quantity')
+                .innerHTML = `Cart quantity: ${cartQuantity}`;
+            }
+        </script>
+    </body>
+</html>

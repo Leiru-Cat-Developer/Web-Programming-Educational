@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ON KEY UP</title>
+    </head>
+    <body>
+        <input placeholder="Type something" class="js-input" onkeyup="
+            const inputElement = document.querySelector('.js-input');
+            document.querySelector('.js-typing')
+            .innerHTML = inputElement.value;
+        ">
+        <p class="js-typing"></p>
+    </body>
+</html>

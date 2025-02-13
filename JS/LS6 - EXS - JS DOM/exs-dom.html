@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DOM EXS</title>
+    </head>
+    <body>
+        <button>9a</button>
+
+        <button class="js-9b-button">9b</button>
+
+        <button onclick="
+            chose('heads');
+        ">heads</button>
+        <button onclick="
+            chose('tails');
+        ">tails</button>
+        <p class="js-result-ht"></p>
+
+        <input placeholder="Name" class="js-name-input" onkeydown="
+            handleNameKeyDown(event);
+        ">
+        <button onclick="
+            getName();
+        ">Submit</button>
+        <p class="js-showing-name"></p>
+        <script>
+            //9A
+            console.log(document.querySelector('button'));
+            //9B
+            document.querySelector('.js-9b-button')
+            .innerHTML = '9b done!';
+            //9C
+            function chose(playerChose) {
+                if(playerChose === 'heads') {
+                    document.querySelector('.js-result-ht')
+                    .innerHTML = `You chose: ${playerChose}`;
+                } else if (playerChose === 'tails') {
+                    document.querySelector('.js-result-ht')
+                    .innerHTML = `You chose: ${playerChose}`;
+                }
+            }
+            //9D
+            function getName() {
+                const inputElement = document.querySelector('.js-name-input');
+                let name = inputElement.value;
+                document.querySelector('.js-showing-name')
+                .innerHTML = `Your name is: ${name}`;
+            }
+            //9E
+            function handleNameKeyDown(event) {
+                if(event.key === 'Enter') {getName();}
+            }
+        </script>
+    </body>
+</html>

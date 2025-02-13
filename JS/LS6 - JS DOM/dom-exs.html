@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DOM EXS</title>
+    </head>
+    <body>
+        <p>YouTube Subscribe Button</p>
+        <button onclick="
+            subscribe();
+        " class="js-subscribe-button">Subscribe</button>
+
+        <script>
+            function subscribe() {
+                const buttonElement = document.querySelector('.js-subscribe-button');
+
+                //COMPROBATES IF THERE'S A CHANGE IN THE TEXT
+                //WE CAN CHANGE THE CONDITIONAL TO innerHTML or innerText, IT DEPENDS IF WE NEED THE PROPERTIES OR JUST THE TEXT
+                (buttonElement.innerText === 'Subscribe') ? buttonElement.innerHTML = 'Subscribed' : buttonElement.innerHTML = 'Subscribe';
+            }
+        </script>
+    </body>
+</html>

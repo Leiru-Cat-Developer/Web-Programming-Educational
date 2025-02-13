@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AMAZON</title>
+    </head>
+    <body>
+        <p>Amazon Shipping Calculator</p>
+        <p>Orders under $40 = +$10 shipping</p>
+        <p>Order over $40 = FREE shipping</p>
+
+        <input placeholder="Cost of order" class="js-cost-input" onkeydown="
+            handleCostKeyDown(event);
+        ">
+        <button onclick="
+            calculateTotal();
+        ">Calculate</button>
+        <p class="js-total-cost"></p>
+
+        <script>
+            //HOW STRINGS WORKS
+            String(50);
+            console.log('25' - 5);  //WORKS PROPERLY
+            console.log('25' + 5);  //WORKS AS A CONCATENATION
+
+            window.console.log('WINDOW');
+            window.alert('Test');
+
+            function handleCostKeyDown(event) {
+                console.log(event.key);
+                if(event.key === 'Enter') {calculateTotal();}
+            }
+            function calculateTotal() {
+                const inputElement = document.querySelector('.js-cost-input');
+                //DIFFERENT PROPERTIE FOR INPUT ELEMENTS
+                let cost = Number(inputElement.value); //CONVERTED STRING TO NUMBER
+                if (cost < 40) { cost += 10; }
+                document.querySelector('.js-total-cost')
+                .innerHTML = `Total Cost: $${cost}`;
+            }
+        </script>
+    </body>
+</html>

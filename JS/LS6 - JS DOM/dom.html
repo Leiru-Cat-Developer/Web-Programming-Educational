@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DOCUMENT OBJECT MODEL</title>
+    </head>
+    <body>
+        <button>
+            Hello
+        </button>
+
+        <button class="js-buttton">
+            Second Button
+        </button>
+
+        <script>
+            //TELL JS WHICH ELEMENT WE WANT TO CHOOSE
+            console.log(document.querySelector('button').innerHTML);
+            document.querySelector('button')
+                .innerHTML = 'Changed';
+
+            //DON'T FORGET THE POINT BEFORE 'JS, THAT MEANS IT'S LOOKING FOR A CLASS
+            const buttonElement = document.querySelector('.js-button');
+            console.log(buttonElement);
+
+            /*
+            //DOM COMBINES HTML AND JS
+            console.log(document.title);
+            document.title = 'Changed';
+
+            console.log(document.body);
+            console.log(typeof document.body);
+
+            //HAS ALL THE HTML CONTROL AND CAN MODIFY EVERYTHING
+            console.log(document.body.innerHTML);
+            document.body.innerHTML = '<button>GOOD JOB!</button>';
+            */
+
+            /*
+                REMINDER: CATS ARE ALIENS
+                AND ...
+                METHOD = IS A FUNCTION SAVED INSIDE AN OBJECT
+            */
+        </script>
+    </body>
+</html>
