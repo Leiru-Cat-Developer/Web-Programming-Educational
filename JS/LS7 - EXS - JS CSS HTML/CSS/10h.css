@@ -1,0 +1,19 @@
+body {
+    font-family: Roboto;
+}
+
+.js-cost-input {
+    padding: 10px;
+}
+
+.js-calculate {
+    padding: 11px 15px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+}
