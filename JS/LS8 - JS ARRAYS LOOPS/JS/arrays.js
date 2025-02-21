@@ -25,9 +25,13 @@ myarray.splice(0,1);    //INDEX WE WANT TO REMOVE, NUMBER OF VALUES TO REMOVE
 console.log(myarray);
 */
 
-const toDoList = [
-{name: 'Wash Dishes',dueDate: '2025-10-22'},
-{name: 'Make Dinner',dueDate: '2025-10-22'}];//EMPTY ARRAY WITH AN OBJECT
+const toDoList = JSON.parse(localStorage.getItem('toDoList')) || [{
+    name: 'Make dinner',
+    dueDate: '2022-12-22'
+}, {
+    name: 'Wash dishes',
+    dueDate: '2022-12-22'
+}]; //WHEN WE DON'T HAVE ANYTHING, WE JUST SHOW THE DEFAULT VALUES
 
 renderToDoList();
 
@@ -40,23 +44,22 @@ function renderToDoList() {
         const toDoObject = toDoList[i];
         //const name = toDoObject.name;
         //const dueDate = toDoObject.dueDate;
-        const {name, dueDate} = toDoObject;  //DISTRUCTURING IS A SHORT WAY FROM UP
-        const html = `
+        const { name, dueDate } = toDoObject;  //DISTRUCTURING IS A SHORT WAY FROM UP
+        toDoListHTML += `
         <div>${name}</div>
         <div>${dueDate}</div>
         <button class="delete-toDo-button" onclick="
             toDoList.splice(${i},1);
             renderToDoList();
+            //WE UPDATE THE LIST
+            saveToStorage();
         ">
             Delete
         </button>
         `;
-        toDoListHTML += html;
-        console.log(toDoListHTML);
     }
-
     document.querySelector('.js-toDo-list')
-    .innerHTML = toDoListHTML;
+        .innerHTML = toDoListHTML;
 }
 
 function addToDo() {
@@ -66,14 +69,17 @@ function addToDo() {
     const dueDate = dateInputElement.value;
 
     //IF THE VARIABLE AND THE TYPE OF VALUE FROM THE OBJECT IS THE SAME, WE CAN DO THIS, SHORTHAND PROPERTY
-    toDoList.push({name, dueDate}); //WE ARE ADDING THE VALUE IN THE ARRAY AS AN OBJECT
+    toDoList.push({ name, dueDate }); //WE ARE ADDING THE VALUE IN THE ARRAY AS AN OBJECT
     //IF IT'S DIFFERENT WE JUST ADD: name: name, dueDate: dueDate INSTEAD
-    
-    console.log(toDoList);
 
     inputElement.value = '';    //CLEAN THE TEXTBOX
 
     renderToDoList();   //THIS REFRESH THE LIST EVERY TIME WE ADD SOMETHING
+    saveToStorage();    //WE SAVE THE STORAGE
+}
+
+function saveToStorage() {
+    localStorage.setItem('toDoList',JSON.stringify(toDoList));
 }
 
 /*
