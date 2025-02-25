@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ADV FUNCTIONS EXS</title>
+    </head>
+    <body>
+        <!--12C - 12D-->
+        <button class="js-start-button" onclick="
+            changeText();
+        ">Start</button>
+
+        <br>
+        <br>
+
+        <!--12E-->
+        <button class="js-add-cart" onclick="
+            addMessage();
+        ">Add to cart</button>
+        <p class="js-add-message"></p>
+
+        <!--12h-->
+        <button class="js-add-button" onclick="
+            numMessages++;
+        ">
+            Add
+        </button>
+        <button class="js-remove-button" onclick="
+            if(numMessages != 0) {
+                numMessages--;
+            }
+        ">
+            Remove
+        </button>
+
+        <script src="JS/exs-adv-function.js"></script>
+    </body>
+</html>
