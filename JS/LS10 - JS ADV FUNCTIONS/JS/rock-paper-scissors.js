@@ -21,6 +21,45 @@ function pickComputerMove() {
     return computerMove;
 }
 
+//PLAYING WITH LISTENER
+document.querySelector('.js-rock-button')
+.addEventListener('click',() => {
+    playGame('Rock');
+});
+document.querySelector('.js-paper-button')
+.addEventListener('click',() => {
+    playGame('Paper');
+});
+document.querySelector('.js-scissors-button')
+.addEventListener('click',() => {
+    playGame('Scissors');
+});
+
+//RESET WITH LISTENER
+document.querySelector('.js-reset')
+.addEventListener('click',() => {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.removeItem('score');
+    updateScoreElement();
+});
+
+//PLAYING THE KEYBOARD
+document.body.addEventListener('keydown', (event) => {
+    switch (event.key){
+        case 'r':
+            playGame('Rock');
+            break;
+        case 'p':
+            playGame('Paper');
+            break;
+        case 's':
+            playGame('Scissors');
+            break;
+    }
+});
+
 function playGame(playerMove) {
     const computerMove = pickComputerMove();
 
@@ -71,7 +110,7 @@ let intervalID;
 function autoPlay() {
     if (!isAutoPlaying) {
         //THE INTERVAL GENERATES AN ID WHICH CHANGES EVERYTIME
-        intervalID = setInterval(function() {
+        intervalID = setInterval(() => {
             const playerMove = pickComputerMove();
             //IS PLAYING AUTOMATICALLY EVERY 2 SECS
             playGame(playerMove);

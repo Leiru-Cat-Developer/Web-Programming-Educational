@@ -10,19 +10,19 @@
             Rock Paper Scissors Game!
         </p>
         
-        <button class="move-button" onclick="
+        <button class="move-button js-rock-button" onclick="
             playGame('Rock');
         ">
             <img src="thumbnails/rock-emoji.png" class="move-icon">
         </button>
 
-        <button class="move-button" onclick="
+        <button class="move-button js-paper-button" onclick="
             playGame('Paper')
         ">
             <img src="thumbnails/paper-emoji.png" class="move-icon">
         </button>
 
-        <button class="move-button" onclick="
+        <button class="move-button js-scissors-button" onclick="
             playGame('Scissors')
         ">
             <img src="thumbnails/scissors-emoji.png" class="move-icon">
@@ -32,17 +32,19 @@
         <p class="js-result"></p>
         <p class="js-score"></p>
 
-        <button class="reset-button" onclick="
+        <button class="reset-button js-reset" onclick="
+            /*
             score.wins = 0;
             score.losses = 0;
             score.ties = 0;
             localStorage.removeItem('score');
             updateScoreElement();
+            */
         ">
             Reset Score
         </button>
 
-        <button class="auto-play-button" onclick="
+        <button class="auto-play-button js-auto-play" onclick="
             autoPlay();
         ">
             Auto Play

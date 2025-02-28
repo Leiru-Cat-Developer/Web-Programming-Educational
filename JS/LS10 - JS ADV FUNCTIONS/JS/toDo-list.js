@@ -62,16 +62,16 @@ function renderToDoList() {
     */
 
     //UPLOAD TO 'FOR EACH' FUNCTION
-    toDoList.forEach(function(toDoObject,index) {
+    toDoList.forEach((toDoObject,index) => {
         const { name, dueDate } = toDoObject;
         toDoListHTML += `
         <div>${name}</div>
         <div>${dueDate}</div>
-        <button class="delete-toDo-button" onclick="
-            toDoList.splice(${index},1);
-            renderToDoList();
+        <button class="delete-toDo-button js-delete-toDo-button" onclick="
+            //toDoList.splice(${index},1);
+            //renderToDoList();
             //WE UPDATE THE LIST
-            saveToStorage();
+            //saveToStorage();
         ">
             Delete
         </button>
@@ -80,7 +80,25 @@ function renderToDoList() {
 
     document.querySelector('.js-toDo-list')
         .innerHTML = toDoListHTML;
+
+    //IT'S NECESSARY TO PUT THE LISTENER HERE BECAUSE THE BUTTON DOESN'T ADD'S ITSELF UNTIL WE ADD SOMETHING, AND ALSO IT'S A STRING BEFORE
+    //QUERYSELECTORALL SELECTS ALL THE DELETE BUTTONS, INSTEAD OF JUST ONE
+    //FOR EACH HAS 2 PARAMETERS, VALUE AND INDEX
+    document.querySelectorAll('.js-delete-toDo-button')
+    .forEach((deleteButton, index) => {
+        deleteButton.addEventListener('click', () => {
+            toDoList.splice(index,1);
+            renderToDoList();
+            saveToStorage();
+        });
+    });
 }
+
+//WE ADD A LISTENER FOR ADD FUNCTION
+document.querySelector('.js-add-toDo-button')
+.addEventListener('click',() => {
+    addToDo();
+});
 
 function addToDo() {
     const inputElement = document.querySelector('.js-name-input');
