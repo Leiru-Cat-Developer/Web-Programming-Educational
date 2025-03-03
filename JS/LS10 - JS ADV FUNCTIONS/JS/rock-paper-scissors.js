@@ -38,12 +38,31 @@ document.querySelector('.js-scissors-button')
 //RESET WITH LISTENER
 document.querySelector('.js-reset')
 .addEventListener('click',() => {
-    score.wins = 0;
-    score.losses = 0;
-    score.ties = 0;
-    localStorage.removeItem('score');
-    updateScoreElement();
+    confirmationReset();
 });
+
+function confirmationReset() {
+    document.querySelector('.confirmation-reset-text')
+    .innerHTML = `Are you sure you want to reset the score?
+    <button class='yes-button'>Yes</button>
+    <button class='no-button'>No</button>`;
+
+    //WE'RE ADDING A QUERY AFTER ADDING THE BUTTONS TO ASK FOR THE NEXT MOVE
+    //12W - 12X
+    document.querySelector('.yes-button').addEventListener('click',() => {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+        document.querySelector('.confirmation-reset-text')
+        .innerHTML = '';
+    });
+    document.querySelector('.no-button').addEventListener('click',() => {
+        document.querySelector('.confirmation-reset-text')
+        .innerHTML = '';
+    });
+}
 
 //PLAYING THE KEYBOARD
 document.body.addEventListener('keydown', (event) => {
@@ -56,6 +75,12 @@ document.body.addEventListener('keydown', (event) => {
             break;
         case 's':
             playGame('Scissors');
+            break;
+        case 'a':
+            autoPlay();
+            break;
+        case 'Backspace':
+            confirmationReset();
             break;
     }
 });
@@ -120,7 +145,20 @@ function autoPlay() {
         clearInterval(intervalID);
         isAutoPlaying = false;
     }
+    if (isAutoPlaying) {
+        document.querySelector('.auto-play-button')
+        .innerHTML = 'Stop Playing';
+    }else {
+        document.querySelector('.auto-play-button')
+        .innerHTML = 'Auto Play';
+    }
 }
+
+//12S
+document.querySelector('.js-auto-play')
+.addEventListener('click',() => {
+    autoPlay();
+});
 
 function updateScoreElement() {
     document.querySelector('.js-score')
