@@ -121,6 +121,17 @@ products.forEach((product) => {
                 });
             }
 
+            let cartQuantity = 0;
+
+            cart.forEach((item) => {
+                //LOOP THROUGHT EACH ITEM IN THE CART
+                cartQuantity += item.quantity;
+            });
+
+            document.querySelector('.js-cart-quantity')
+            .innerHTML = cartQuantity;
+
+            console.log(cartQuantity);
             console.log(cart);
         })
     });
