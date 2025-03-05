@@ -55,8 +55,13 @@
       <div class="products-grid js-products-grid"></div>
     </div>
     <!-- THE ORDER MATTERS WHEN WE ARE CREATING A SCRIPT -->
-    <script src="data/cart.js"></script>
     <script src="data/products.js"></script>
-    <script src="js/amazon.js"></script>
+    <script type="module" src="js/amazon.js"></script>
+    <!-- 
+      STEPS ABOUT MODULES
+      - add type= "module" to the script we want to import
+      - add export before the variable we want to import
+      - add import into the file we want to call the variable
+    -->
   </body>
 </html>

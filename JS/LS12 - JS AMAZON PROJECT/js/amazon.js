@@ -1,3 +1,5 @@
+import { cart } from "../data/cart.js"; //RENAME THE VARIABLE AVOID NAME PROBLEMS
+
 let productsHTML = '';
 
 products.forEach((product) => {

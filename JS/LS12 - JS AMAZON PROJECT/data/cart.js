@@ -1,1 +1,1 @@
-const cart = [];
+export const cart = []; //WE ARE NOW AVAILABLE TO EXPORT THIS TO AMAZON.JS
