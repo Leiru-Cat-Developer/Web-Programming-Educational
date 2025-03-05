@@ -1,11 +1,11 @@
 //RENAME THE VARIABLE AVOID NAME PROBLEMS, IF THAT'S THE CASE
-import { cart } from "../data/cart.js";
+import { cart,addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 
 let productsHTML = '';
 
 products.forEach((product) => {
-    productsHTML += `
+  productsHTML += `
         <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
@@ -55,57 +55,40 @@ products.forEach((product) => {
           </button>
         </div>
     `;
-    document.querySelector('.js-products-grid')
-    .innerHTML = productsHTML;
+  document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-    //ALL THE ADD TO CART FUNCTIONS
-    document.querySelectorAll('.js-add-to-cart')
+  function updateCartQuantity(productId) {
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+      //LOOP THROUGHT EACH ITEM IN THE CART
+      cartQuantity += cartItem.quantity;
+    });
+
+    document.querySelector('.js-cart-quantity')
+      .innerHTML = cartQuantity;
+
+    const messageAdded = document.querySelector(`.js-added-to-cart-${productId}`);
+
+    messageAdded.classList.add('added-to-cart-visible');
+
+    setTimeout(() => {
+      messageAdded.classList.remove('added-to-cart-visible');
+    }, 2000);
+  }
+
+  //ALL THE ADD TO CART FUNCTIONS
+  document.querySelectorAll('.js-add-to-cart')
     .forEach((button) => {
-        button.addEventListener('click', () => {
-            const {productId} = button.dataset;
-            let matchingItem;
+      button.addEventListener('click', () => {
+        const { productId } = button.dataset;
 
-            const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+        addToCart(productId);
+        updateCartQuantity(productId);
 
-            const quantity = Number(quantitySelector.value);
-
-            //WE LOOP THROUGHT THE CART TO REALIZE THE 3 CASES
-            cart.forEach((item) => {
-                if (productId === item.productId) {
-                    matchingItem = item;
-                }
-            });
-
-            if (matchingItem) {
-                matchingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    productId,
-                    quantity
-                });
-            }
-
-            let cartQuantity = 0;
-
-            cart.forEach((item) => {
-                //LOOP THROUGHT EACH ITEM IN THE CART
-                cartQuantity += item.quantity;
-            });
-
-            document.querySelector('.js-cart-quantity')
-            .innerHTML = cartQuantity;
-
-            const messageAdded = document.querySelector(`.js-added-to-cart-${productId}`);
-
-            messageAdded.classList.add('added-to-cart-visible');
-
-            setTimeout(() => {
-              messageAdded.classList.remove('added-to-cart-visible');
-            },2000);
-
-            // console.log(quantitySelector);
-            // console.log(cartQuantity);
-            // console.log(cart);
-        })
+        // console.log(quantitySelector);
+        // console.log(cartQuantity);
+        // console.log(cart);
+      })
     });
 });
