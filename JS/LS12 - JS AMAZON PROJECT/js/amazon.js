@@ -1,4 +1,6 @@
-import { cart } from "../data/cart.js"; //RENAME THE VARIABLE AVOID NAME PROBLEMS
+//RENAME THE VARIABLE AVOID NAME PROBLEMS, IF THAT'S THE CASE
+import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 let productsHTML = '';
 
