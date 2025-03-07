@@ -1,5 +1,5 @@
 //RENAME THE VARIABLE AVOID NAME PROBLEMS, IF THAT'S THE CASE
-import { cart,addToCart } from "../data/cart.js";
+import { cart, addToCart, updateJustCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -56,19 +56,10 @@ products.forEach((product) => {
           </button>
         </div>
     `;
+
   document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-  function updateCartQuantity(productId) {
-    let cartQuantity = 0;
-
-    cart.forEach((cartItem) => {
-      //LOOP THROUGHT EACH ITEM IN THE CART
-      cartQuantity += cartItem.quantity;
-    });
-
-    document.querySelector('.js-cart-quantity')
-      .innerHTML = cartQuantity;
-
+  function addedAnimation(productId) {
     const messageAdded = document.querySelector(`.js-added-to-cart-${productId}`);
 
     messageAdded.classList.add('added-to-cart-visible');
@@ -78,6 +69,9 @@ products.forEach((product) => {
     }, 2000);
   }
 
+  //14D
+  updateJustCartQuantity('js-cart-quantity');
+
   //ALL THE ADD TO CART FUNCTIONS
   document.querySelectorAll('.js-add-to-cart')
     .forEach((button) => {
@@ -85,7 +79,8 @@ products.forEach((product) => {
         const { productId } = button.dataset;
 
         addToCart(productId);
-        updateCartQuantity(productId);
+        addedAnimation(productId);
+        updateJustCartQuantity('js-cart-quantity');
 
         // console.log(quantitySelector);
         // console.log(cartQuantity);

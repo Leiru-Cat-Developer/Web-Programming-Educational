@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from "../data/cart.js";
+import { cart, removeFromCart, updateJustCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -34,9 +34,13 @@ cart.forEach((cartItem) => {
                     <span>
                     Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                     </span>
-                    <span class="update-quantity-link link-primary">
+                    <span class="update-quantity-link link-primary js-update-link" data-product-id="${matchingProduct.id}">
                     Update
                     </span>
+
+                    <input class="quantity-input">
+                    <span class="save-quantity-link">Save</span>
+
                     <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
                     Delete
                     </span>
@@ -90,19 +94,31 @@ cart.forEach((cartItem) => {
             </div>
             </div>
     `;
+    //14A - 14C
+    updateJustCartQuantity('js-checkout-header-middle');
 });
 
 document.querySelector('.js-order-summary')
-.innerHTML = cartSummaryHTML;
+    .innerHTML = cartSummaryHTML;
 
 document.querySelectorAll('.js-delete-link')
-.forEach((link) => {
-    link.addEventListener('click',() => {
-        const productId = link.dataset.productId;
-        removeFromCart(productId);
-        const container = document.querySelector(`.js-cart-item-container-${productId}`);
-        container.remove();
+    .forEach((link) => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            removeFromCart(productId);
+            const container = document.querySelector(`.js-cart-item-container-${productId}`);
+            container.remove();
+            //14A - 14C
+            updateJustCartQuantity('js-checkout-header-middle');
+        });
     });
-});
 
 // console.log(cartSummaryHTML);
+
+//14F
+document.querySelectorAll('.js-update-link')
+    .forEach((link) => {
+        link.addEventListener('click', () => {
+            console.log(link.dataset.productId);
+        });
+    });
