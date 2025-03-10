@@ -1,5 +1,5 @@
 //RENAME THE VARIABLE AVOID NAME PROBLEMS, IF THAT'S THE CASE
-import { cart, addToCart, updateJustCartQuantity } from "../data/cart.js";
+import { cart, addToCart, updateCartQuantity as updateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -70,7 +70,7 @@ products.forEach((product) => {
   }
 
   //14D
-  updateJustCartQuantity('js-cart-quantity');
+  updateCartQuantity('js-cart-quantity');
 
   //ALL THE ADD TO CART FUNCTIONS
   document.querySelectorAll('.js-add-to-cart')
@@ -80,7 +80,7 @@ products.forEach((product) => {
 
         addToCart(productId);
         addedAnimation(productId);
-        updateJustCartQuantity('js-cart-quantity');
+        updateCartQuantity('js-cart-quantity');
 
         // console.log(quantitySelector);
         // console.log(cartQuantity);

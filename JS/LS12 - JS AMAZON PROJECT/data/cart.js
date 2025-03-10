@@ -55,7 +55,7 @@ export function removeFromCart(productId) {
 }
 
 //14E
-export function updateJustCartQuantity(className) {
+export function updateCartQuantity(className) {
     let cartQuantity = 0;
 
     cart.forEach((cartItem) => {
@@ -65,4 +65,15 @@ export function updateJustCartQuantity(className) {
 
     document.querySelector(`.${className}`)
         .innerHTML = cartQuantity;
+}
+
+export function updateQuantity(productId, newQuantity) {
+    let productFind;
+    cart.forEach((cartItem) => {
+        if (cartItem.productId === productId) {
+            productFind = cartItem;
+        }
+    });
+    productFind.quantity = newQuantity;
+    saveToStorage();
 }
