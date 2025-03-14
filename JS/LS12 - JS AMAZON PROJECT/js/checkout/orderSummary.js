@@ -10,6 +10,7 @@ import { formatCurrency } from "../utils/money.js";
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 //WE EXPORT THE ESM VERSION OF JS, DEFAULT EXPORT WHEN WE NEED JUST ONE THING
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+import { renderPaymentSummary } from "./paymentSummary.js";
 
 //DELIVERY DAYS
 const today = dayjs();
@@ -167,6 +168,7 @@ export function renderOrderSummary() {
             link.addEventListener('click', () => {
                 const productId = link.dataset.productId;
                 removeFromCart(productId);
+                renderPaymentSummary();
                 const container = document.querySelector(`.js-cart-item-container-${productId}`);
                 container.remove();
                 //14A - 14C
@@ -193,6 +195,7 @@ export function renderOrderSummary() {
                 const { productId, deliveryOptionId } = element.dataset;
                 //UPDATE DELIVERYOPTION ID
                 updateDeliveryOption(productId, deliveryOptionId);
+                renderPaymentSummary();
                 renderOrderSummary();
             });
         });
