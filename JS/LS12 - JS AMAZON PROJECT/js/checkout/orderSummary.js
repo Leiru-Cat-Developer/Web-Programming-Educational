@@ -14,7 +14,7 @@ import { renderPaymentSummary } from "./paymentSummary.js";
 
 //DELIVERY DAYS
 const today = dayjs();
-const deliveryDate = today.add(7, 'days');    //NUMBER OF TIME, LACK
+const deliveryDate = today.add(7, 'days');            //NUMBER OF TIME, LACK
 console.log(deliveryDate.format('dddd, MMMM, D'));    //FORMAT FOR DAYS COMING FROM DOCUMENTATION
 
 export function renderOrderSummary() {
