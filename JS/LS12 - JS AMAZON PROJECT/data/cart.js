@@ -61,17 +61,17 @@ export function removeFromCart(productId) {
 }
 
 //14E
-// export function updateCartQuantity(className) {
-//     let cartQuantity = 0;
+export function updateCartQuantity(className) {
+    let cartQuantity = 0;
 
-//     cart.forEach((cartItem) => {
-//         //LOOP THROUGHT EACH ITEM IN THE CART
-//         cartQuantity += cartItem.quantity;
-//     });
+    cart.forEach((cartItem) => {
+        //LOOP THROUGHT EACH ITEM IN THE CART
+        cartQuantity += cartItem.quantity;
+    });
 
-//     document.querySelector(`.${className}`)
-//         .innerHTML = cartQuantity;
-// }
+    document.querySelector(`.${className}`)
+        .innerHTML = cartQuantity;
+}
 
 export function updateQuantity(productId, newQuantity) {
     let productFind;
