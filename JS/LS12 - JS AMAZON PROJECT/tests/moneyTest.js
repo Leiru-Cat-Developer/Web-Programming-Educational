@@ -6,6 +6,10 @@ import formatCurrency from "../js/utils/money.js";
 
     EDGE TEST
     Test with values that are tricky
+
+    FRAMEWORK
+    This is another way we can test our code, a FRAMEWORK is an external
+    librery that help us write test easier
 */
 console.log('TEST SUIT - formatCurrency:'); //TITLE
 
