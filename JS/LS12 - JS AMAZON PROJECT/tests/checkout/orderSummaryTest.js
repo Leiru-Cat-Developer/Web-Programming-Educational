@@ -92,4 +92,34 @@ describe('TEST SUIT - renderOrderSummary', () => {
             document.querySelector(`.js-product-price-${productId2}`).innerText
         ).toEqual('$20.95');
     });
+
+    //16I
+    it('Updating delivery option' ,() => {
+        document.querySelector(`.js-delivery-option-input-${productId1}-3`).click();
+
+        expect(
+            document.querySelector(`.js-delivery-option-input-${productId1}-3`).checked
+        ).toEqual(true);
+
+        expect(cart.length).toEqual(2);
+        expect(localStorage.setItem).toHaveBeenCalledWith('cart', JSON.stringify([
+            {
+                productId: productId1,
+                quantity: 2,
+                deliveryOptionId: '3'
+            },
+            {
+                productId: productId2,
+                quantity: 1,
+                deliveryOptionId: '2'
+            }
+        ]));
+
+        expect(
+            document.querySelector('.js-payment-summary-shipping').innerText
+        ).toContain('$14.98');
+        expect(
+            document.querySelector('.js-payment-summary-total').innerText
+        ).toContain('$63.50');
+    });
 });
