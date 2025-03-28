@@ -32,7 +32,6 @@ export function addToCart(productId) {
     const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
 
     const quantity = Number(quantitySelector.value);
-    // const quantity = 1;  //cartTest.js
 
     //WE LOOP THROUGHT THE CART TO TEST THE 3 CASES
     cart.forEach((cartItem) => {
