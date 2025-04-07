@@ -25,12 +25,34 @@ class Product {
     this.priceCents = productDetails.priceCents;
   }
 
+  extraInfoHTML() {
+    return '';
+  }
+
   getStarsUrl() {
     return `images/ratings/rating-${this.rating.stars * 10}.png`;
   }
 
   getPriceCents() {
     return `$${formatCurrency(this.priceCents)}`;
+  }
+}
+
+class Clothing extends Product {
+  sizeChartLink;
+
+  constructor (productDetails){
+    super(productDetails);    //Constructor from inheritance, PRODUCT
+
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+
+  extraInfoHTML() {
+    return `
+      <a href="${this.sizeChartLink}" target="_blank">
+        Size Chart
+      </a>
+    `;
   }
 }
 
@@ -714,5 +736,8 @@ export const products = [
     priceCents: 5000
   }
 ].map((productDetails) => {
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 });
