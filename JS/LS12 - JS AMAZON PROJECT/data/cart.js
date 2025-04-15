@@ -102,14 +102,26 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
         }
     });
 
-    if(!validDeliveryOptions(deliveryOptionId)) {
+    if (!validDeliveryOptions(deliveryOptionId)) {
         return;
     }
 
-    if(!matchingItem) {
-        return;    
+    if (!matchingItem) {
+        return;
     }
 
     matchingItem.deliveryOptionId = deliveryOptionId;
     saveToStorage();
+}
+
+export function loadCart(fun) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.addEventListener('load', () => {
+        console.log('LOAD CART: SUCCEED');
+        fun();
+    });
+
+    xhr.open('GET', 'https://supersimplebackend.dev/cart');
+    xhr.send();
 }
