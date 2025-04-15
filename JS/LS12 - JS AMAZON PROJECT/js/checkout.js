@@ -11,14 +11,24 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 async function loadPage() {
     console.log('load page');
 
-    // !Await only can be used inside an async function
-    await loadProductsFetch();
+    try {
+        // !Creates an error
+        // throw 'error1';
 
-    await new Promise((resolve) => {
-        loadCart(() => {
-            resolve();
+        // !Await only can be used inside an async function
+        await loadProductsFetch();
+
+        const value = await new Promise((resolve, reject) => {
+            // throw 'error2';
+            loadCart(() => {
+                reject('error3');
+                resolve();
+            });
         });
-    });
+
+    } catch (error) {
+        console.log('Unexpected error, Please try again later.');
+    }
 
     renderOrderSummary();
     renderPaymentSummary();
