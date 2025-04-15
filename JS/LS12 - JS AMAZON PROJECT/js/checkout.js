@@ -7,6 +7,25 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 // import '../data/cart-class.js';
 // import '../data/backend-practice.js';1
 
+// *Async functions make a function returns a promise
+async function loadPage() {
+    console.log('load page');
+
+    // !Await only can be used inside an async function
+    await loadProductsFetch();
+
+    await new Promise((resolve) => {
+        loadCart(() => {
+            resolve();
+        });
+    });
+
+    renderOrderSummary();
+    renderPaymentSummary();
+}
+
+loadPage();
+
 // *Allows us to execute multiple things at the same time
 // new Promise((resolve) => {
 //     loadProducts(() => {    // !The code executes after the loadProducts
@@ -41,15 +60,15 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 // });
 
 // !Does the same thing with promise All
-Promise.all([
-    loadProductsFetch(),
-    new Promise((resolve) => {
-        loadCart(() => {
-            resolve();
-        });
-    })
+// Promise.all([
+//     loadProductsFetch(),
+//     new Promise((resolve) => {
+//         loadCart(() => {
+//             resolve();
+//         });
+//     })
 
-]).then(() => {
-    renderOrderSummary();
-    renderPaymentSummary();
-});
+// ]).then(() => {
+//     renderOrderSummary();
+//     renderPaymentSummary();
+// });
