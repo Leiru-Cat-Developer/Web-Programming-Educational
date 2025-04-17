@@ -786,7 +786,8 @@ export const products = [
 // ! Backend products are over here
 export let products = [];
 
-export function loadProducts(fun) {
+// ! This functions is changed by loadProductsFetch
+export function loadProducts() {
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener('load', () => {
@@ -801,8 +802,6 @@ export function loadProducts(fun) {
         return new Product(productDetails);
       });
     console.log('LOAD PRODUCTS: SUCCEED');
-
-    fun();
   });
 
   // xhr.addEventListener('error', (error) => {
@@ -814,7 +813,7 @@ export function loadProducts(fun) {
 
 loadProducts();
 
-export function loadProductsFetch() {
+export function loadProductsFetch(fun) {
   const promise = fetch(
     'https://supersimplebackend.dev/products'
   ).then((response) => {
@@ -828,6 +827,7 @@ export function loadProductsFetch() {
     });
 
     console.log('LOAD PRODUCTS');
+    fun();
   }).catch((error) => {
     console.log('ERROR');
   });

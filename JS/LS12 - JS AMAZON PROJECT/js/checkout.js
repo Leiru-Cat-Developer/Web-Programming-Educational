@@ -1,4 +1,4 @@
-import { loadCart } from "../data/cart.js";
+import { loadCart, loadCartFecth } from "../data/cart.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
@@ -16,7 +16,11 @@ async function loadPage() {
         // throw 'error1';
 
         // !Await only can be used inside an async function
-        await loadProductsFetch();
+        //18I
+        Promise.all([
+            loadProductsFetch(),
+            loadCartFecth()
+        ]);
 
         const value = await new Promise((resolve, reject) => {
             // throw 'error2';
@@ -25,6 +29,8 @@ async function loadPage() {
                 resolve();
             });
         });
+
+        await loadCartFecth();
 
     } catch (error) {
         console.log('Unexpected error, Please try again later.');
