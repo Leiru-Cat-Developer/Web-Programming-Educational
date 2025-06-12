@@ -1,8 +1,13 @@
-import { CardBody } from "./components/Card";
+import Card, { CardBody } from "./components/Card";
 
 function App() {
   return (
-    <CardBody title="REACT COURSE" text="This is the begin of the course" />
+    <Card>
+      <CardBody
+        title="CHILDREN"
+        text="Children is used for item creation without repeat code"
+      />
+    </Card>
   );
 }
 
