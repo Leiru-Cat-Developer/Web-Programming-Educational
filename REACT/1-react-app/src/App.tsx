@@ -11,9 +11,11 @@ function App() {
   };
 
   //Segunda Funcion
-  const handleSelect2 = (elemento: string) => {
-    console.log("MOSTRANDO", elemento);
-  };
+  // const handleSelect2 = (elemento: string) => {
+  //   console.log("MOSTRANDO", elemento);
+  // };
+
+  //Condicional externo que nos puede mostrar la cantidad de elementos en la lista con operador ternario, asi ya no tenemos que volver a crear los elementos dentro del return
 
   return (
     <Card>
@@ -21,13 +23,18 @@ function App() {
         Si la longitud de la lista es diferente de cero, el mensaje se muestra,
         en caso contrario no se muestra absolutamente nada, ni siquiera el cero
       */}
-      {list.length !== 0 && "Mi Lista"}
+      {/* {list.length !== 0 && "Mi Lista"} */}
       <CardBody
         title="CHILDREN"
         text="Children is used for item creation without repeat code"
       />
-      <List data={list} onSelect={handleSelect1} />
-      <List data={list} onSelect={handleSelect2} />
+      {list.length ? (
+        <List data={list} onSelect={handleSelect1} />
+      ) : (
+        "La lista no tiene elementos para mostrar"
+      )}
+      {/* <List data={list} onSelect={handleSelect1} /> */}
+      {/* <List data={list} onSelect={handleSelect2} /> */}
     </Card>
   );
 }
