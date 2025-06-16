@@ -2,6 +2,7 @@ import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
 
 function App() {
+  // const list: string[] = [];
   const list = ["Knight", "Hornet", "Pure Vessel", "Final Bright"];
 
   //Primera Funcion
@@ -16,6 +17,11 @@ function App() {
 
   return (
     <Card>
+      {/* 
+        Si la longitud de la lista es diferente de cero, el mensaje se muestra,
+        en caso contrario no se muestra absolutamente nada, ni siquiera el cero
+      */}
+      {list.length !== 0 && "Mi Lista"}
       <CardBody
         title="CHILDREN"
         text="Children is used for item creation without repeat code"
