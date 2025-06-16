@@ -1,7 +1,14 @@
 import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
 
+//Ejercicio de boton
+import Button from "./components/Button";
+import { useState } from "react";
+
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  const handleClick = () => setIsLoading(!isLoading);
+
   // const list: string[] = [];
   const list = ["Knight", "Hornet", "Pure Vessel", "Final Bright"];
 
@@ -28,13 +35,18 @@ function App() {
         title="CHILDREN"
         text="Children is used for item creation without repeat code"
       />
+
       {list.length ? (
         <List data={list} onSelect={handleSelect1} />
       ) : (
         "La lista no tiene elementos para mostrar"
       )}
+
       {/* <List data={list} onSelect={handleSelect1} /> */}
       {/* <List data={list} onSelect={handleSelect2} /> */}
+      <Button isLoading={isLoading} onClick={handleClick}>
+        Hola Mundo
+      </Button>
     </Card>
   );
 }

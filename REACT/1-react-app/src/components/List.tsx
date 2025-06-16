@@ -1,5 +1,4 @@
 // import { MouseEvent } from "react";
-
 import { useState } from "react";
 
 type Props = {
@@ -13,6 +12,7 @@ function List({ data, onSelect }: Props) {
     setIndex(i);
     onSelect?.(elemento); //Puede que la funcion se ocupe o no
   };
+
   return (
     <ul className="list-group">
       {/* Pasar el key es importante para que se asigne un identificador a cada dato del arreglo */}
