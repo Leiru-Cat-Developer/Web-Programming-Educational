@@ -1,52 +1,28 @@
-import Card, { CardBody } from "./components/Card";
-import List from "./components/List";
-
-//Ejercicio de boton
-import Button from "./components/Button";
 import { useState } from "react";
+import Card from "./components/Card";
+import List from "./components/List";
+import Button from "./components/Button";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const handleClick = () => setIsLoading(!isLoading);
+  // CREAMOS NUESTRO ARREGLO QUE SE VA A ACTUALIZAR
+  const [data, setData] = useState([
+    "Hollow Knight",
+    "Halo",
+    "Tom Raider",
+    "Outlast",
+  ]);
 
-  // const list: string[] = [];
-  const list = ["Knight", "Hornet", "Pure Vessel", "Final Bright"];
+  // CREAMOS LA FUNCION PARA AGREGAR MINIONS
+  const addMinion = () => setData([...data, "Minion"]); // AGREGA AL FINAL DE TODO LOS DATOS
 
-  //Primera Funcion
-  const handleSelect1 = (elemento: string) => {
-    console.log("IMPRIMIENDO", elemento);
-  };
-
-  //Segunda Funcion
-  // const handleSelect2 = (elemento: string) => {
-  //   console.log("MOSTRANDO", elemento);
-  // };
-
-  //Condicional externo que nos puede mostrar la cantidad de elementos en la lista con operador ternario, asi ya no tenemos que volver a crear los elementos dentro del return
+  // CREAMOS LA FUNCION PARA AGREGAR MINIONS
+  const delMinion = () => setData(data.slice(0, -1)); // ELIMINA EL ULTIMO ELEMENTO
 
   return (
     <Card>
-      {/* 
-        Si la longitud de la lista es diferente de cero, el mensaje se muestra,
-        en caso contrario no se muestra absolutamente nada, ni siquiera el cero
-      */}
-      {/* {list.length !== 0 && "Mi Lista"} */}
-      <CardBody
-        title="CHILDREN"
-        text="Children is used for item creation without repeat code"
-      />
-
-      {list.length ? (
-        <List data={list} onSelect={handleSelect1} />
-      ) : (
-        "La lista no tiene elementos para mostrar"
-      )}
-
-      {/* <List data={list} onSelect={handleSelect1} /> */}
-      {/* <List data={list} onSelect={handleSelect2} /> */}
-      <Button isLoading={isLoading} onClick={handleClick}>
-        Hola Mundo
-      </Button>
+      <Button onClick={addMinion}>Agregar</Button>
+      <Button onClick={delMinion}>Eliminar</Button>
+      <List data={data} />
     </Card>
   );
 }
