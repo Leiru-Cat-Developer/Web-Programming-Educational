@@ -1,7 +1,7 @@
 //Uso de hooks
 import { useState } from "react";
 
-export function TwitterFollowCard({ children, user, initIsFollowing }) {
+export function TwitterFollowCard({ children, userName, initIsFollowing }) {
   //ESTADO ACTUAL , ESTADO QUE QUEREMOS CAMBIAR
   const [isFollowing, setIsFollowing] = useState(initIsFollowing);
 
@@ -13,10 +13,10 @@ export function TwitterFollowCard({ children, user, initIsFollowing }) {
   return (
     <article className="twitter-card">
       <header>
-        <img src={`https://unavatar.io/github/${user}`} alt="mdo avatar" />
+        <img src={`https://unavatar.io/github/${userName}`} alt="mdo avatar" />
         <div>
           <strong>{children}</strong>
-          <span>@{user}</span>
+          <span>@{userName}</span>
         </div>
       </header>
       <aside>
