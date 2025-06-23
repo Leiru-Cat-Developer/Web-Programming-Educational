@@ -1,42 +1,80 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.twitter-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  max-width: 400px;
+  border: 1px solid #d1d5da;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(15, 20, 25, 0.1);
+  font-family: system-ui, sans-serif;
+  transition: box-shadow 0.2s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.twitter-card:hover {
+  box-shadow: 0 4px 8px rgba(15, 20, 25, 0.15);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.twitter-card header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.twitter-card img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
 }
 
-.card {
-  padding: 2em;
+.twitter-card strong {
+  display: block;
+  font-size: 16px;
+  color: #0f1419;
 }
 
-.read-the-docs {
-  color: #888;
+.twitter-card span {
+  font-size: 14px;
+  color: #536471;
+}
+
+.button-follow {
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  font-size: 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.button-follow:hover {
+  background-color: #1a8cd8;
+}
+
+.button-following {
+  background-color: #9fabb3;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 6px 16px;
+  font-size: 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.button-following:hover {
+  background-color: red;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
