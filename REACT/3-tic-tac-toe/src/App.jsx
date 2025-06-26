@@ -1,25 +1,8 @@
 import { useState } from "react";
-
-const TURNS = {
-  X: "X",
-  O: "O",
-};
-
-//INIT CUADRADOS DEL TABLERO
-const Square = ({ children, isSelected, updateBoard, index }) => {
-  const className = `square ${isSelected ? "is-selected" : ""}`;
-
-  //FUNCION OYENTE PARA ACTUALIZAR EL TABLERO SOLO CUANDO SE DA CLICK
-  const handleClick = () => {
-    updateBoard();
-  };
-
-  return (
-    <div onClick={handleClick} className={className}>
-      {children}
-    </div>
-  );
-};
+import confetti from "canvas-confetti"; //npm install canvas-confetti -E
+import { Square } from "./components/Square.jsx";
+import { TURNS } from "./constants.js";
+import { checkWinner } from "./logic/board.js";
 
 function App() {
   //INIT TABLERO
@@ -28,26 +11,59 @@ function App() {
   //INIT TURNOS
   const [turn, setTurn] = useState(TURNS.X);
 
+  //INIT WINNERS [null = no hay ganador, false = hay un empate, true = gano alguien]
+  const [winner, setWinner] = useState(null);
+
+  //RESET GAME SI SE QUIERE RESET EN CUALQUIER MOMENTO
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(TURNS.X);
+    setWinner(null);
+  };
+
+  //CHECK ENDGAME SI ES QUE HAY EMPATE
+  const checkEndGame = (newBoard) => {
+    //SI TODAS LAS POCISIONES SON DIFERENTES DE NULL, EL TABLERO ESTA LLENO Y RETORNA TRUE
+    return newBoard.every((Square) => Square != null);
+  };
+
   //UPDATE TABLERO
-  const updateBoard = () => {
-    //CAMBIAR VALOR DEL TURNO
+  const updateBoard = (index) => {
+    //SI CADA SQUARE YA TIENE CONTENIDO YA NO DEJA HACER CLICK O SI YA HAY UN GANADOR
+    if (board[index] || winner) return;
+
+    //CAMBIAR VALOR DEL TURNO EN EL TABLERO
+    const newBoard = [...board];
+    newBoard[index] = turn;
+    setBoard(newBoard);
+
+    //CAMBIAR VALOR DEL TURNO EN LA LOGICA
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
+
+    //EVALUAR SI HAY UN GANADOR
+    const newWinner = checkWinner(newBoard);
+    if (newWinner) {
+      confetti(); //ANIMATION
+      setWinner(newWinner);
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false);
+    }
   };
 
   return (
     <main className="board">
       <h1>TIC TAC TOE</h1>
 
+      <button onClick={resetGame}>Resetear el Juego</button>
+
       {/* TABLERO GENERAL */}
       <section className="game">
-        {board.map((_, index) => {
+        {board.map((square, index) => {
           return (
-            <Square
-              key={index}
-              index={index}
-              updateBoard={updateBoard}
-            ></Square>
+            <Square key={index} index={index} updateBoard={updateBoard}>
+              {square}
+            </Square>
           );
         })}
       </section>
@@ -57,6 +73,21 @@ function App() {
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
+
+      {/* RENDERIZADO CONDICIONAL */}
+      {winner != null && (
+        <section className="winner">
+          <div className="text">
+            <h2>{winner === false ? "Empate" : "Gano: "}</h2>
+            <header className="win">
+              {winner && <Square>{winner}</Square>}
+            </header>
+            <footer>
+              <button onClick={resetGame}>Empezar de Nuevo</button>
+            </footer>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
