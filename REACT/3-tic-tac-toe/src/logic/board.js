@@ -14,3 +14,9 @@ export const checkWinnerFrom = (boardToCheck) => {
     }
     return null; //EN CASO NO HAY GANADOR
 };
+
+//CHECK ENDGAME SI ES QUE HAY EMPATE
+export const checkEndGame = (newBoard) => {
+    //SI TODAS LAS POCISIONES SON DIFERENTES DE NULL, EL TABLERO ESTA LLENO Y RETORNA TRUE
+    return newBoard.every((Square) => Square != null);
+};

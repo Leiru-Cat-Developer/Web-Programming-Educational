@@ -1,15 +1,34 @@
+//STATE DEFAULT
 import { useState } from "react";
+
+//EXTERNAL LIBRARY
 import confetti from "canvas-confetti"; //npm install canvas-confetti -E
+
+//COMPONENTS
 import { Square } from "./components/Square.jsx";
 import { TURNS } from "./constants.js";
-import { checkWinner } from "./logic/board.js";
+import { checkWinnerFrom, checkEndGame } from "./logic/board.js";
+import { WinnerModal } from "./components/WinnerModal.jsx";
+import {
+  saveGameToStorage,
+  resetGameToStorage,
+} from "./logic/storage/index.js";
 
 function App() {
-  //INIT TABLERO
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [board, setBoard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem("board");
 
-  //INIT TURNOS
-  const [turn, setTurn] = useState(TURNS.X);
+    //SI HAY ALGO EN STORAGE LO CARGA, SI NO, SET A DEFAULT VALUE
+    return boardFromStorage
+      ? JSON.parse(boardFromStorage)
+      : Array(9).fill(null);
+  }); //INIT TABLERO
+
+  const [turn, setTurn] = useState(() => {
+    //SI HAY ALGO EN STORAGE LO CARGA, SI NO, SET A DEFAULT VALUE
+    const turnFromStorage = window.localStorage.getItem("turn");
+    return turnFromStorage ?? TURNS.X;
+  }); //INIT TURNOS
 
   //INIT WINNERS [null = no hay ganador, false = hay un empate, true = gano alguien]
   const [winner, setWinner] = useState(null);
@@ -19,12 +38,8 @@ function App() {
     setBoard(Array(9).fill(null));
     setTurn(TURNS.X);
     setWinner(null);
-  };
 
-  //CHECK ENDGAME SI ES QUE HAY EMPATE
-  const checkEndGame = (newBoard) => {
-    //SI TODAS LAS POCISIONES SON DIFERENTES DE NULL, EL TABLERO ESTA LLENO Y RETORNA TRUE
-    return newBoard.every((Square) => Square != null);
+    resetGameToStorage();
   };
 
   //UPDATE TABLERO
@@ -41,8 +56,10 @@ function App() {
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
 
+    saveGameToStorage({ newBoard: newBoard, newTurn: newTurn });
+
     //EVALUAR SI HAY UN GANADOR
-    const newWinner = checkWinner(newBoard);
+    const newWinner = checkWinnerFrom(newBoard);
     if (newWinner) {
       confetti(); //ANIMATION
       setWinner(newWinner);
@@ -74,20 +91,7 @@ function App() {
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
 
-      {/* RENDERIZADO CONDICIONAL */}
-      {winner != null && (
-        <section className="winner">
-          <div className="text">
-            <h2>{winner === false ? "Empate" : "Gano: "}</h2>
-            <header className="win">
-              {winner && <Square>{winner}</Square>}
-            </header>
-            <footer>
-              <button onClick={resetGame}>Empezar de Nuevo</button>
-            </footer>
-          </div>
-        </section>
-      )}
+      <WinnerModal winner={winner} resetGame={resetGame} />
     </main>
   );
 }
